@@ -180,5 +180,16 @@
 		语法:truncate table 表;
 		需求:删除goods表中所有数据
 		truncate table goods;
-		
+11.ecshop项目部署
+	1>解压ecshop的压缩包
+	2>加压后的文件夹复制到phpstudy的安装文件夹下的WWW文件夹中
+	3>浏览器中输入127.0.0.1/ecshop按照提示进行安装
+		数据库主机： localhost
+		端口号    :  3306
+		用户名    :  root
+		密码      :  root
+		数据库名  ：  test
+
+
+
 
