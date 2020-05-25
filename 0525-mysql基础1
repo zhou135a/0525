@@ -75,15 +75,15 @@
 			查看当前数据库中有哪些表
 		select * from ecs_goods;
 			查看表名为ecs_goods的表中有哪些数据
-	d.表结构
-		d1.数据类型
+5.表结构
+		a.数据类型
 			字符类型 'abc' '123'  char varchar
 			数值类型 123    1.23  int
 			日期类型 '2020-05-25' date
 			注意:char 和 varchar的区别
 			char    定长  char(10)     abcdef  
 			varchar 变长  varchar(10)  abcdef
-		d2.表结构的创建
+		b.表结构的创建
 			语法: create table 表名(
 						列   数据类型,
 						列   数据类型,
@@ -95,15 +95,47 @@
 				wechat int,
 				birth date
 			);
-		d3.查看表结构
+		c.查看表结构
 			desc 表名;
 			需求:查看表txl的表结构
 				desc txl;
+		d.修改表结构
+			增加列
+				alter table test add id int;
+			修改列
+				alter table test modify id char(10);
+			删除列
+				alter table test drop column id;
+		e.删除表结构
+			删除表结构会连同数据一起删除
+			语法:drop table 表;
+			需求:删除txl表
+				drop table txl;
+		f.约束
+			主键约束  列中的数据唯一，每张表中只能有一个，不能为空
+			唯一约束  列中的数据唯一，作为主键约束的补充，可以为空
+			检查约束  列中的数据是否满足条件
+			非空约束  列中的数据不能为空
+			外键约束  列中的数据依赖于另外一张表中的数据
+			语法：
+			create table 表(
+				列 数据类型 primary key,   主键约束
+				列 数据类型 unique,        唯一约束
+				列 数据类型 check(检查条件),检查约束
+				列 数据类型 not null,       非空约束
+				列 数据类型 references 被参考表(被参考列)
+			);
+			注意:外键约束
+			1>被参考表的被参考列一定存在
+			2>参考列和被参考列的数据类型必须一致
+			3>被参考表的被参考列一定是主键约束
 
-
-
-
-
+6.管理mysql所使用的工具
+	SQLyog(小海豚)
+	mysql workbench
+	navicat
+	toad
+	dbeaver
 
 
 
