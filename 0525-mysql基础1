@@ -189,6 +189,63 @@
 		用户名    :  root
 		密码      :  root
 		数据库名  ：  test
+12.数据的查询
+	a.数据查询的分类
+		1>简单查询
+		2>多表查询
+		3>分组查询
+		4>子查询
+	b.简单查询
+		语法:select 列 from 表 where 条件;
+		select后面from前面是和列相关的
+		where条件是和行相关的
+		*代表所有列
+		ecshop表结构：
+		https://www.cnblogs.com/lmule/archive/2010/11/05/1869624.html
+			所有信息
+			需求:查询ecs_goods表中所有数据
+				select * from ecs_goods;
+			指定行的信息
+			需求:查询ecs_goods表中商品名称是KD876的所有信息
+				select * from ecs_goods where goods_name='KD876';
+			指定列的信息
+			需求:查询ecs_goods表中所有商品的名称
+				select goods_name from ecs_goods;
+			指定行的列的信息
+			需求:查询ecs_goods表中商品名称是KD876的本店售价
+				select shop_price from ecs_goods where goods_name='KD876';
+	c.where条件
+		1>比较
+			>
+			<
+			=
+			>=
+			<=
+			!=
+			<>
+			需求:查询ecs_goods表中本店售价高于3000的所有商品信息
+			select * from ecs_goods where shop_price>3000;
+			需求:查询ecs_goods表中商品名称不是KD876的所有信息
+			select * from ecs_goods where goods_name!='KD876';
+			select * from ecs_goods where goods_name<>'KD876';
+		2>关系
+			and  同时满足
+			or   满足一个条件即可
+			not  不满足条件
+			需求:查询ecs_goods表中本店售价低于3000并且高于2000的所有商品信息
+			select * from ecs_goods where shop_price<3000 and shop_price>2000;
+			需求:查询ecs_goods表中商品名称是KD876的或者商品名称是诺基亚的所有信息
+			select * from ecs_goods where goods_name='KD876' or goods_name='诺基亚';
+		3>区间
+			between 。。。and。。。
+			小在前，大在后，包括两个端点
+			需求:查询ecs_goods表中本店售价范围1388和1999之间的所有商品名称
+			select goods_name from ecs_goods where shop_price between 1388 and 1999;
+			select goods_name from ecs_goods where shop_price>=1388 and shop_price<=1999;
+			
+
+
+
 
 
 
