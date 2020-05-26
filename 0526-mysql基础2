@@ -116,6 +116,34 @@ b.多表查询(内联查询)
 		select g1.goods_name from ecs_goods g1,ecs_category c1
 		where g1.cat_id=c1.cat_id
 		and c1.cat_name='3G手机';
+--练习
+---1.jpg
+	1>select * from test1 where department='计算机系'
+	  and place='北京';
+	2>update test1 set department='信息学院' where
+		department='计算机系';
+	3>select  t1.no,t1.name,t2,grade,t2,courses from test1 t1,test2 t2
+		where t1.no=t2.no
+		and t2.grade>=75;
+--2.jpg
+	1>select s.name from student s,achievement a
+		where s.id=a.id
+		and  a.mark>85;
+	2>select count(*) from achievement where mark>=90;
+	3>insert into student values(7,80);
+	4>update student set mark=87 where id=3;
+	5>delete from student where name='Betty';
+	  delete from achievement where id=6;
+--4.jpg
+	1>select s#,grade from sc where c#='C2';
+	2>select sname from s where sname like 'D%';
+	3>
+	select s.s#,s.sname  from s,sc,c
+	where s.s#=sc.s#
+	and c.c#=sc.c#
+	and c.cname='Maths';
+	4>
+	select s# from sc where c# in ('C2','C4');
 
 
 
