@@ -1,0 +1,125 @@
+1.复习
+a.常见的数据库
+b.mysql的安装
+c.mysql的服务和端口和管理员
+	mysqld
+	3306
+	root
+d.mysql的登录
+	mysql 
+	mysql -u root -p
+	mysql -h 127.0.0.1 -u root -p(-h 链接目标数据库的IP)
+e.基础命令
+	show databases;
+	select database();
+	use test;
+	show tables;
+	select * from goods;
+f.表结构
+	常见的数据类型
+		字符  char varchar
+		整型  int
+		日期  date
+	创建表结构
+		create table 表 (
+			列 数据类型,
+			列 数据类型,
+			...
+		);
+	查看表结构
+		desc 表名;
+	修改表结构
+		增加列
+		alter table 表 add 列 数据类型
+		修改列
+		alter table 表 modify 列 数据类型
+		删除列
+		alter table 表 drop column 列;
+	删除表结构
+		drop table 表;
+g.SQL分类
+	DDL create alter truncate drop
+	DML insert update delete
+	DCL grant revoke
+	DQL select
+h.数据的新增
+	向指定列新增
+		insert into 表(列1,列2...) values(值1,值2...);
+	向所有列新增
+		insert into 表 values(值1,值2....);
+i.数据的修改
+	update 表 set 列=值 where 条件;
+j.数据的删除
+	truncate table 表;
+	delete from 表 where 条件;
+k.查询分类
+	简单查询
+	多表查询
+	分组查询
+	子查询
+l.简单查询
+	select 列 from 表 where 条件;
+m.where条件
+	比较
+	关系
+	区间
+		between...and...
+	模糊
+		like
+		_
+		%
+	空值
+		is null
+		is not null
+	in
+=================================================
+1.多表查询
+当一张表中数据无法满足条件的时候使用多张表
+a.笛卡尔积
+	两张表不做任何关联产生的数据,产生数据量翻倍，无效数据增加，所以引入内联查询、左联查询、右联查询
+	select * from ecs_goods;
+	select * from ecs_category;
+	select * from ecs_goods,ecs_category;
+b.多表查询(内联查询)
+	语法:
+	select 列 from 表1,表2 where 表1.列=表2.列;
+	select 列 from 表1 inner join 表2 on 表1.列=表2.列;
+	判断关联列
+	1>名字一样
+	2>作用一致
+	3>主外键关系
+	需求:查询商品名称是KD876的分类名称
+	1>分析列
+		商品名称
+		分类名称
+	2>分析表
+		商品名称  ecs_goods;
+		分类名称  ecs_category;
+	3>关联表
+		select * from ecs_goods ,ecs_category
+		where  ecs_goods.cat_id=ecs_category.cat_id;
+	4>过滤
+		select cat_name from ecs_goods ,ecs_category
+		where  ecs_goods.cat_id=ecs_category.cat_id
+		and goods_name='KD876';
+	需求:查询分类名称是3G手机的商品名称有哪些,【要求显示分类id和商品名称】
+	1>分析列
+		分类名称
+		商品名称
+	2>分析表
+		商品名称  ecs_goods;
+		分类名称  ecs_category;
+	3>关联
+		select * from ecs_goods g1,ecs_category c1
+		where g1.cat_id=c1.cat_id;		
+	4>过滤
+		select g1.goods_name from ecs_goods g1,ecs_category c1
+		where g1.cat_id=c1.cat_id
+		and c1.cat_name='3G手机';
+
+
+
+
+
+
+
