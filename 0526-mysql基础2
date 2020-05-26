@@ -155,13 +155,61 @@ b.多表查询(内联查询)
 		source sakila-schema.sql;
 	e.导入sakila-data.sql
 		source sakila-data.sql;
-		
-3.多表查询练习
+练习:
 	查询以C开头的国家有哪些城市?
+	1.分析列
+		国家名称
+		城市名字
+	2.分析表
+		国家表
+		城市表
+	3.关联
+		select * from city c,country co
+		where c.country_id=co.country_id;
+	4.过滤
+		select c.city from city c,country co
+		where c.country_id=co.country_id
+		and co.country like 'C%';		
 
 	查询客户表中名字为MARY的所在城市?
-
+	1.分析列
+		客户名字
+		城市名称
+	2.分析表
+		客户表
+		城市表
+		地址表
+	3.关联
+		select * from city c,address a,customer cu
+		where c.city_id=a.city_id
+		and a.address_id=cu.address_id;
+	4.过滤
+		select c.city from city c,address a,customer cu
+		where c.city_id=a.city_id
+		and a.address_id=cu.address_id
+		and cu.first_name='MARY';	
 	查询客户表中名字为MARY的所在国家?
+	1.分析列
+		客户名字
+		国家名字
+	2.分析表
+		客户表
+		国家表
+		城市表
+		地址表
+	3.关联
+		select * 
+		from city c,country co,address a,customer cu
+		where c.country_id=co.country_id
+		and   c.city_id=a.city_id
+		and a.address_id=cu.address_id;
+	4.过滤
+		select co.country
+		from city c,country co,address a,customer cu
+		where c.country_id=co.country_id
+		and   c.city_id=a.city_id
+		and a.address_id=cu.address_id
+		and cu.first_name='MARY';	
 
 
 
