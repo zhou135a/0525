@@ -210,6 +210,37 @@ b.多表查询(内联查询)
 		and   c.city_id=a.city_id
 		and a.address_id=cu.address_id
 		and cu.first_name='MARY';	
+3.子查询
+	一条SQL语句的执行依赖于另外一条SQL语句的执行结果
+	需求:查询商品名称是KD876的分类名称
+	1>查询ecs_goods表中满足条件的cat_id
+		select cat_id from ecs_goods where goods_name='KD876';
+	2>查询ecs_category表中cat_id为上面查询出来结果的cat_name
+		select cat_name from ecs_category where cat_id=(select cat_id from ecs_goods where goods_name='KD876');
+	需求:查询分类名称是3G手机的商品名称有哪些
+	1>查询ecs_category表中满足条件的cat_id
+		select cat_id from ecs_category where cat_name='3g手机';
+	2>查询ecs_goods表中cat_id为上面查询出来结果的goods_name
+		select goods_name from ecs_goods where cat_id=(select cat_id from ecs_category where cat_name='3g手机');
+	子查询通常用于数据的新增，修改，删除，查询
+	--2.jpg
+		3>
+		select id from student where name='Robert';
+		insert into achievement values((select id from student where name='Robert'),80);
+		4>
+		select id from student where name='Rose';
+		update achievement set mark=87 where id=(select id from student where name='Rose');
+		5>
+		delete from achievement where id=(select id from student where name='Betty');
+		delete from student where name='Betty';
+	子查询通常分为单行子查询和多行子查询
+		单行子查询:查询子句返回的结果是一行,可以用=，也可以用in
+		多行子查询:查询子句返回的结果是多行，用in
+		需求:查询商品本店售价高于1000的所有商品分类名称
+		1>查询ecs_goods表中满足条件的cat_id
+			select cat_id from ecs_goods where shop_price>1000;
+		2>查询ecs_category表中cat_id为上面查询出来结果的cat_name
+			select cat_name from ecs_category where cat_id=(select cat_id from ecs_goods where shop_price>1000);
 
 
 
