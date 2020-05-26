@@ -156,7 +156,12 @@ b.多表查询(内联查询)
 	e.导入sakila-data.sql
 		source sakila-data.sql;
 		
+3.多表查询练习
+	查询以C开头的国家有哪些城市?
 
+	查询客户表中名字为MARY的所在城市?
+
+	查询客户表中名字为MARY的所在国家?
 
 
 
