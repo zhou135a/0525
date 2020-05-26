@@ -145,7 +145,17 @@ b.多表查询(内联查询)
 	4>
 	select s# from sc where c# in ('C2','C4');
 
-
+2.sakila数据库的导入
+	a.下载sakila数据库
+		https://dev.mysql.com/doc/index-other.html
+	b.命令提示符进入到sakila-data.sql所在文件夹
+	c.登录mysql数据库
+		mysql -u root -p
+	d.导入sakila-schema.sql
+		source sakila-schema.sql;
+	e.导入sakila-data.sql
+		source sakila-data.sql;
+		
 
 
 
