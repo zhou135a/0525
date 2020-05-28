@@ -1,0 +1,62 @@
+--1.jpg
+1>select s.class,count(*) from stinfo s,grade g
+	where s.id=g.id
+	and g.math<60
+	group by s.class;
+2>
+select * from stinfo s,grade g
+	where s.id=g.id
+	and g.math>90
+	order by class desc;
+
+--a.png
+select  z.姓名,t.图书名,t.出版社 from 图书 t,作者 z
+where t.作者编号=z.作者编号
+and z.年龄<(select avg(年龄) from 作者);
+
+--华为.jpg
+1>select * from student order by ssex desc;
+2>select * from score where degree between 80 and 100;
+=========================================================================
+mongodb基础
+1.下载和安装
+	https://www.mongodb.com/download-center/community
+	a.操作系统类型
+		win
+		linux
+		unix
+	b.操作系统位数
+		32
+		64
+	c.软件包类型
+		msi microsoft installer (走注册表)
+		zip 普通压缩包 (绿色)
+2.设置环境变量
+	计算机--属性--高级--环境变量--系统变量--Path中添加mongo的bin文件夹的路径
+	;F:\迅雷下载\mongodb-win32-x86_64-2012plus-4.2.6\bin
+	确定x3
+3.启动mongodb服务	
+	mongo    mongodb的客户端服务
+	mongod   mongodb的服务端服务
+	a.创建文件夹
+		md d:\data
+	b.启动命令
+		mongod --dbpath d:\data
+		mongod --dbpath d:\data --logpath d:\data\mongo.log 
+		--dbpath 	数据存放路径(文件夹)
+		--logpath	日志存放位置(文件)
+		--fork      后台运行
+	c.检查服务和端口
+		mongod mongodb的主服务
+		27017  mongodb的端口
+		win+r--cmd--tasklist | find "mongod"
+		win+r--cmd--netstat -an | find "27017"
+4.登录mongodb
+	mongo
+		登录本地test数据库
+	mongo 127.0.0.1/admin
+		登录IP地址为127.0.0.1的admin数据库
+	mongo 127.0.0.1:27017/admin
+		登录IP地址为127.0.0.1的端口为27017的admin数据库
+
+
