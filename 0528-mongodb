@@ -101,3 +101,18 @@ mongodb基础
 		 db.xiyouji.remove({name:'5kong'})
 	b.删除所有文档
 		 db.xiyouji.remove({})
+9.文档的修改
+	a.修改指定文档
+		$set
+		db.xiyouji.update({name:'5kong'},{$set:{age:10000}})
+	b.修改所有文档
+		db.xiyouji.update({age:18},{$set:{kill:200}},{multi:true})
+	c.覆盖文档
+		db.xiyouji.update({name:'5kong'},{age:300})
+	d.自增
+		db.xiyouji.update({name:'niumo'},{$inc:{age:-30}})
+		db.xiyouji.update({name:'niumo'},{$inc:{age:100000}})
+	e.删除属性
+		db.xiyouji.update({name:'niumo'},{$unset:{'age':100000}})
+
+
