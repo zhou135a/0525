@@ -114,5 +114,45 @@ mongodb基础
 		db.xiyouji.update({name:'niumo'},{$inc:{age:100000}})
 	e.删除属性
 		db.xiyouji.update({name:'niumo'},{$unset:{'age':100000}})
+10.文档的查询
+	a.查询所有文档
+		db.xiyouji.find()
+	b.查询指定文档
+		db.xiyouji.find({name:'8jie'})
+	c.查询指定属性
+		db.xiyouji.find({},{_id:0,name:1})
+	d.查询指定文档的指定属性
+		db.xiyouji.find({name:'8jie'},{_id:0,kill:1})
+11.查询表达式
+	a.比较
+		$gt 	大于
+		$lt     小于
+		$gte    大于等于
+		$lte    小于等于
+		db.xiyouji.find({age:{$gte:200}})
+		db.xiyouji.find({age:{$lt:1000}})
+	b.关系
+		$and   同时满足
+		$or    满足一个即可
+		$not   不满足
+		db.xiyouji.find({$and:[{age:{$gte:200}},{age:{$lte:1200}}]})
+		db.xiyouji.find({$or:[{name:'8jie'},{name:'tieshan'}]})
+	c.存在性
+		$exists
+		db.xiyouji.find({age:{$exists:1}})
+		db.xiyouji.find({age:{$exists:0}})
+	d.数据类型
+		$type
+		1   浮点
+		2   字符串
+		3   对象
+		4   数组
+		5   二进制数据
+		7   对象id
+		8   布尔
+		9   日期
+		10  null 空值
+		db.xiyouji.find({age:{$type:2}})
+		db.xiyouji.find({age:{$type:1}})
 
 
