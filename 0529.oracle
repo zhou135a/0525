@@ -75,7 +75,7 @@
 				语法:drop user 用户;
 				需求:删除用户赵本山
 				drop user 赵本山;
-				
+
 			测试
 			sqlplus 赵本山/xiaopin
 		4.权限
@@ -91,3 +91,100 @@
 				语法:revoke 权限 from 用户;
 				需求:回收赵本山的connect权限
 				revoke connect from 赵本山;
+	b.表结构
+		b1.数据类型
+			数值  number
+			字符  char varchar varchar2
+			日期  date
+		b2.表结构创建
+			语法:create table 表(
+				列 数据类型,
+				列 数据类型,
+				。。。。
+			)
+			需求:创建表bank,员工名字 字符类型，工资 数值类型，生日 日期类型
+			create table bank(
+				员工名字 char(20),
+				工资     number,
+				生日     date
+			);
+		b3.表结构的查看	
+			1>sqlplus 中输入 desc 表名;
+			2>右键表--describe
+			3>右键表--view
+			4>小箭头法
+		b4.表结构的修改
+			1>右键表--edit
+			2>新增列
+			3>修改列
+			4>删除列
+		b5.表结构的删除
+			语法:drop table 表;
+			需求:删除bank表
+			drop table bank;
+		b6.约束
+			主键约束 列中数据唯一，每张表中只能有一个主键约束，不能为空
+			唯一约束 列中数据唯一，作为主键约束的补充，可以为空
+			非空约束 列中的数据不能为空
+			检查约束 列中的数据是否满足条件
+			外键约束 列中的数据依赖于另外一张表中列的数据
+			语法:
+			create table 表(
+				列 数据类型 primary key,
+				列 数据类型 unique,
+				列 数据类型 not null,
+				列 数据类型 check(检查条件),
+				列 数据类型 references 被参考表(被参考列)
+			);
+			61>主键约束
+			需求:创建表user，userid 数值类型，主键约束，username 字符类型
+				create table user1(
+						userid number primary key,
+						username char(10)
+				);
+			62>唯一约束
+			需求:创建表员工,员工名字 字符类型，员工id 数字类型 主键，员工电话 字符类型 唯一约束
+				create table 员工(
+					员工id number primary key,
+					员工电话 char(20) unique,
+					员工名字 char(10)
+				);
+			63>非空约束
+			空，null表示，非空 not null，只要向表中新增数据就一定要对该列进行操作
+			需求:创建表员工1，名字 字符类型 非空，年龄 数值类型
+				create table 员工1(
+					名字 char(10) not null,
+					年龄 number
+				);
+			64>检查约束
+			需求:创建表员工薪资，员工名字 字符类型，员工工资数值类型 要求只能在200和1000之间
+				create table 员工薪资(
+						员工名字 char(10),
+						员工工资 number check(员工工资>=200 and 员工工资<=1000)
+				);
+			65>外键约束
+				注意:
+				被参考表的被参考列一定存在
+				参考列和被参考列的数据类型必须一致
+				被参考列一定是主键约束
+				create table customer(
+						id  number primary key,
+						info char(10)
+				);
+				create table order1(
+					id number references customer(id),
+					info char(10)
+				);
+			66>默认值
+				如果不想该列新增数据，填入的值
+				需求:创建表学生，民族 默认是汉,名字 字符类型
+				create table 学生(
+					民族 char(20) default '汉',
+					名字 char(10)
+				);
+				
+
+
+
+
+
