@@ -51,3 +51,43 @@
 	sql developer    跨平台
 	toad
 	navicat
+4.oracle基础
+	a.用户和权限
+		1>管理员
+			sys  system
+			登录时候必须要选择sysdba角色
+		2>角色
+			权限的集合
+			normal 普通用户权限
+			sysoper系统操作员权限
+			sysdba 管理员权限
+		3>用户
+			31>创建用户
+				语法:create user 用户 identified by 密码;
+				需求:创建用户赵本山，密码xiaopin
+				create user 赵本山 identified by xiapin;
+			32>修改用户
+				锁定和解锁用户
+				语法:alter user 用户 [identified by 密码] account unlock(lock);
+				需求:解锁scott用户
+				alter user scott account unlock;
+			33>删除用户
+				语法:drop user 用户;
+				需求:删除用户赵本山
+				drop user 赵本山;
+				
+			测试
+			sqlplus 赵本山/xiaopin
+		4.权限
+			常见权限
+			connect   链接数据库权限
+			resource  调用数据库资源权限
+			dba       管理员权限
+			41>授权
+				语法:grant 权限 to 用户;
+				需求:赋予赵本山用户connect和resource权限
+				grant connect,resource to 赵本山;
+			42>回收授权
+				语法:revoke 权限 from 用户;
+				需求:回收赵本山的connect权限
+				revoke connect from 赵本山;
