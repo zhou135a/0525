@@ -182,9 +182,91 @@
 					民族 char(20) default '汉',
 					名字 char(10)
 				);
-				
 
 
+--建表测试题目
+	create table 宿舍(
+		宿舍号 char(6) primary key,
+		宿舍电话 number check(宿舍电话>=6330000 and 宿舍电话<=6339999)
+	);
 
-
-
+	create table 同学(
+		学号 char(6) primary key,
+		姓名 char(10) not null,
+		性别 char(10) check(性别='男' or 性别='女'),
+		年龄 number not null,
+		民族 char(20) default '汉' not null,
+		身份证号 char(30) unique,
+		宿舍号 char(6) references 宿舍(宿舍号)
+	)
+5.SQL的分类
+	SQL:结构化查询语言
+	DDL:数据库定义语言  create alter drop truncate
+	DML:数据库操作语言  insert update delete
+	DCL:数据库控制语言  grant revoke
+	DQL:数据库查询语言  select
+6.事务
+	一件事有开端就一定有结束
+	我<============银行<===========大佬
+	commit   提交数据到数据库中，每个用户看到的数据一致
+	rollback 数据库恢复到最后一次提交的状态
+	DML语句会触发事务的开始
+7.数据的新增
+	向指定列新增数据
+	insert into 表(列1,列2) values(值1,值2);
+	向所有列新增数据
+	insert into 表 values(值1,值2...);
+	注意:日期类型数据操作必须使用to_date函数
+	sysdate 系统当前时间
+	insert into emp1 values('b',to_date('2020-01-01','YYYY-MM-DD'));
+	insert into emp1 
+	values('b',to_date('2020-01-01 18:00:10','YYYY-MM-DD hh24:mi:ss'));
+8.数据的修改
+	update 表 set 列=值 where 条件
+9.数据的删除
+	delete [from] 表 where 条件;
+	可以删除指定数据，也可以删除所有数据，删除数据可以找回
+	truncate table 表;
+	只能删除所有数据，破坏了表中的数据，删除数据无法找回
+10.数据的查询
+	查询指定列
+	查询指定行
+	查询所有数据
+	查询指定行的列
+	select 列 from 表 where 条件;
+11.where条件
+	列和列的比较或者列和值的比较，返回的结果只有真或者假
+	a.比较
+		>
+		<
+		=
+		>=
+		<=
+		!=
+		<>
+	b.关系
+		and
+		or
+		not
+	c.区间
+		between...and...
+	d.模糊查询
+		like 
+		_
+		%
+	e.空值查询
+		oracle有处理空值的函数nvl，nvl2
+		select comm,nvl(comm,0) from emp;
+		nvl(查看是否有空值的列，如果为空显示的值)，不会修改原有数据
+	f.in
+		在...里面
+	g.常见函数
+		upper    大写
+		lower    小写
+		initcap  首字母大写
+		select ename,lower(ename),upper(lower(ename)),initcap(ename) from emp;
+		round    小数点后保留几位
+		select avg(sal),round(avg(sal),2) from emp;
+		distinct 去重
+		select distinct(job) from emp;
+		select distinct job from emp;
