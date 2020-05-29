@@ -1,0 +1,53 @@
+1.mysql
+2.mongodb
+3.oracle
+==========================
+1.oracle的架构
+	c----   /  ----s
+	客户端     服务
+	tns        oracle主服务
+			   监听服务
+  
+	密码：20110930
+	a.oracle的服务端
+		oracle的主服务   OracleServiceORCL
+		win+r--cmd--sqlplus / as sysdba   (管理员登录本地数据库)
+		select status from v$instance; (查看oracle的状态)
+			如果出现open说明数据库正常运行
+			a1.关闭oracle主服务
+				shutdown immediate;
+			a2.启动oracle主服务
+				startup;
+		监听服务         Oracle....TNSListener
+		win+r--cmd--lsnrctl status(查看监听状态)
+		lsnrctl stop    关闭监听
+		lsnrctl start   启动监听
+		重建监听
+		win+r--cmd--netca--删除监听--新建监听
+	b.oracle的客户端
+		TNS配置(你要链接哪个数据库)
+		C:\oracle\product\10.2.0\db_1\NETWORK\ADMIN\tnsnames.ora
+			ORCL =                               链接标识
+			  (DESCRIPTION =
+			    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.255.132)(PORT = 1521))  协议、IP、端口
+			    (CONNECT_DATA =
+			      (SERVER = DEDICATED)
+			      (SERVICE_NAME = orcl)  实例名
+			    )
+			  )
+		测试tns配置
+			tnsping orcl
+			ok说明我可以和数据库连通
+2.oracle的版本
+	8i
+	9i    i:网络
+	10g
+	11g   g:网格
+	12c   c:云
+3.管理oracle的工具
+	sqlplus          黑白
+	em               企业管理器
+	plsql develper   32位  win
+	sql developer    跨平台
+	toad
+	navicat
