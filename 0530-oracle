@@ -65,4 +65,43 @@
 		右联:
 		select 列 from 左表 right join 右表 on 左表.列=右表.列;
 		右联查询是右表中所有数据都有
+2.分组查询
+	按照某种条件进行分类
+	select 列 from 表
+		where 条件
+			group by 分组条件
+				having 分组后过滤条件
+	a.分组(聚合)函数
+		max()    最大
+		min()    最小
+		avg()    平均
+		sum()    求和
+		count()  计数
+		需求:查询emp表中最高工资，最低工资，平均工资
+		select max(sal),min(sal),avg(sal) from emp;
+	b.分组
+		select deptno from emp group by deptno;
+		select deptno,count(ename) from emp group by deptno;
+		需求:查询每个部门地址下有多少员工？
+		1>分析列
+			部门地址
+			员工名字
+		2>分析表
+			部门地址 dept
+			员工名字 emp
+		3>关联
+			select * from dept d,emp e 
+			where d.deptno=e.deptno;
+		4>过滤
+			select d.loc,count(e.ename) from dept d,emp e 
+			where d.deptno=e.deptno
+			group by d.loc;
+	c.分组后过滤
+		having 分组后过滤 可以直接跟分组函数
+		where  分组前过滤 不能直接跟分组函数
+		需求:查询员工数量超过5的部门地址
+			select d.loc,count(e.ename) from dept d,emp e 
+			where d.deptno=e.deptno
+			group by d.loc
+			having count(e.ename)>5;		
 
