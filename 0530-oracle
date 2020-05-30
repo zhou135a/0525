@@ -188,7 +188,37 @@
 			select sal from emp where deptno=20;
 		b.查询大于上面查出工资的任意一个的所有信息
 			select * from emp where sal >any(select sal from emp where deptno=20);
-			
+4.排序和分页
+	select 列  from  表
+		where 条件
+			group by 分组条件
+				having 分组后过滤条件
+					order by 排序条件;
+	a.排序
+		顺序：从小到大
+			order by 列;
+			order by 列 asc;
+		倒序：从大到小
+			order by 列 desc
+		需求:查询emp表中所有数据，按照工资从大到小进行排列
+		select * from emp order by sal desc;
+		需求:查询emp表中所有数据，按照工资顺序排列
+		select * from emp order by sal;
+	b.分页
+		伪列
+			rowid   标识数据物理存储位置
+			rownum  行号,不属于任何一张表
+		需求:查询前5行数据
+			select * from emp where rownum<=5;
+		需求:查询6-10行数据
+			select * from emp where rownum>=6 and rownum<=10;
+			select * from (select a.*,rownum rn from emp a)
+			where rn>=6 and rn<=10;
+
+
+
+
+
 
 
 		  
