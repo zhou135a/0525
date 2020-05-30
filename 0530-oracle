@@ -104,4 +104,92 @@
 			where d.deptno=e.deptno
 			group by d.loc
 			having count(e.ename)>5;		
+	--查询每个人有几门课程
+		1.
+		  学员名字
+		  课程名字
+		2.
+		  学员
+		  课程
+		  分数
+		3.
+		  select  * from stscore st,student s,course co
+		  where st.studentid=s.studentid
+		  and  co.courseid=st.courseid;
+		4.
+		  select s.sname,count(c.cname) from stscore st,student s,course co
+		  where st.studentid=s.studentid
+		  and  co.courseid=st.courseid
+		  group by s.sname;
+		--查询每门课程的最高分、最低分
+		1.
+		  课程名字
+		  分数
+		2.
+		  课程表
+		  分数表
+		3.
+		  select * from course co,stscore st
+		  where co.courseid=st.courseid;
+		4.
+		  select co.cname,max(score),min(score) from course co,stscore st
+		  where co.courseid=st.courseid
+		  group by co.cname ;
+		--查询826班所有课程的最高分、最低分
+		1.
+		  班级名
+		  课程名
+		  分数
+		2.
+		  班级表
+		  分数表
+		  学员表
+		  课程表
+		3.
+		  select  *  from class c,course co,student s,stscore st
+		  where c.classid=s.classid
+		  and   co.courseid=stscore.courseid
+		  and   s.studentid=st.studentid;
+		4.
+		  select  co.cname,max(st.score),min(st.score)  from class c,course co,student s,stscore st
+		  where c.classid=s.classid
+		  and   co.courseid=st.courseid
+		  and   s.studentid=st.studentid
+		  and   c.classname='826'
+		  group by co.cname;
+	 
+		 --查询826班oracle课程的最高分最低分
+		   select  co.cname,max(st.score),min(st.score)  from class c,course co,student s,stscore st
+		  where c.classid=s.classid
+		  and   co.courseid=st.courseid
+		  and   s.studentid=st.studentid
+		  and   c.classname='826'
+		  and co.cname='ORACLE'
+		  group by co.cname;
+3.子查询
+	一条SQL语句的执行依赖于另外一条SQL语句的执行结果
+	需求:查询scott的上司的名字
+		a.查询emp表中满足条件的mgr
+			select mgr from emp where ename='SCOTT';
+		b.查询emp表中empno为上面查询出来结果的名字
+			select ename from emp where empno=(select mgr from emp where ename='SCOTT');
+	需求:查询薪资范围800和2000之间员工所在部门名称
+		a.查询emp表中满足条件的deptno
+			select deptno from emp where sal between 800 and 2000;
+		b.查询dept表中deptno为上面查询出来结果的部门名称
+			select dname from dept where deptno=(select deptno from emp where sal between 800 and 2000);
+	子查询分为单行子查询和多行子查询
+		单行子查询 查询子句返回结果是一个 可以用=，也可以用in
+		多行子查询 查询子句返回结果是多个 只能in,all,any
+	all()   所有
+	any()   任何一个
+		需求:查询工资高于20号部门任何一个员工的工资的人的所有信息
+		a.查询满足条件的工资
+			select sal from emp where deptno=20;
+		b.查询大于上面查出工资的任意一个的所有信息
+			select * from emp where sal >any(select sal from emp where deptno=20);
+			
+
+
+		  
 
