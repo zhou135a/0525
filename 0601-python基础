@@ -36,4 +36,41 @@ HeyGor
 	b.python的安装
 		1>傻瓜安装
 		2>Add Python To Path打勾
+3.python的开发工具
+	pycharm
+	sublime text
+	eclipse+pydev
+	vi/vim
+4.python的运行环境
+	a.win+r--cmd(命令提示符)--python
+		print('heygor is handsome!')
+	b.win+r--cmd(命令提示符)--python 文件名
+		注意：python的文件都是以.py结尾
+	c.IDE开发工具
+	d.IDLE(python自带工具)
+5.python的输入和输出
+	a.输入的应用场景
+		1>注册用户时候添加信息
+		2>taobao搜索框中输入信息
+		3>直播时候信息采集
+	b.输出的应用场景
+		1>taobao中搜索出来的商品
+		2>访问页面不存在(404)
+		3>调试程序时候输出
+		4>前后端交互
+	c.python的输出
+		1.直接输出
+		2.变量输出
+		3.函数输出
+		4.格式化输出
+	d.python的输入
+		1.input python2中接受键盘传入的数值类型数据，python3中接受键盘传入的字符类型数据
+		2.raw_input
+		python2中接受建安传入的字符类型数据，python3中已经废弃
+	e.数据类型转换
+		type()  查看数据类型
+		int()   转换为整型数据
+		str()   转换为字符类型数据
+
+
 
