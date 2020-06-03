@@ -35,3 +35,23 @@
 	c.追加文件
 		open的第二个参数是a，注意换行
 		\n  代表换行
+3.文件操作案例
+	a.read readline readlines区别
+		read 		读取字节数，如果没有设置字节数，默认读取到文件结尾
+		readline    读取下一行，每次读出一行内容
+		readlines   读取文件所有行，保存在一个列表中，作为迭代器遍历
+	b.文件操作案例
+		d:\\创建txl.txt内容
+		heygor 119
+		o8ma   110
+		判断电话110是否存在于文件中
+4.csv文件操作
+	a.csv文件是什么
+		逗号分割值，文件以纯文本形式存储表格数据
+	b.csv文件读写
+		1>csv文件读
+			使用python处理excel文件需要导入excel模块
+			import csv
+		2>csv文件的写
+			python生成excel文件兼容csv的话，创建参数必须加dialect='excel'
+			
