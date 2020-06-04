@@ -123,3 +123,35 @@
 			系统中已经安装好pip，也已经设置好环境变量
 			墙裂推荐：不要升级pip
 			(安装pymongo)
+12.自动化测试环境安装(python+pycharm+selenium)
+	a.安装python
+		Add Python To Path
+	b.安装pycharm(傻瓜安装)
+		社区版(community)
+		专业版(多了web开发支持)
+	c.配置pycharm的interpreter
+		interpreter：默认是虚拟环境中的python版本
+		把interpreter设置为当前系统中的python
+		config-settings-Project interpreter--python interpreter--点击螺丝--add--搜索本机商的python--make xxxx--apply--ok
+	d.安装selenium模块
+		win+r--cmd--pip install selenium
+	e.下载安装浏览器的webdriver驱动
+		selenium2.x版本时候自带firefox驱动
+		selenium3.x所有驱动都要单独下载，wedriver驱动和浏览器版本一定要对应
+		浏览器建议关闭自动更新
+		1.查看浏览器的版本
+			帮助--关于xxx
+			81.0.4044.129
+		2.搜索浏览器对应版本驱动
+			http://npm.taobao.org/mirrors/chromedriver
+		3.把下载好的解压后webdriver驱动放入python的安装路径下
+		4.测试代码
+			#导入webdriver驱动
+			from selenium import webdriver
+			#定义驱动
+			br=webdriver.Chrome()
+			#打开网页
+			br.get("https://www.taobao.com")
+
+
+
