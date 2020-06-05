@@ -84,3 +84,34 @@
 	c.层级定位
 		$("#form>span>input")
 		id是form的子代span标签的子代input标签
+9.xpath
+	针对xml的路径语言，通过元素的路径来找到这个元素
+	a.工具
+		F12
+		火狐Firbug
+	b.用法
+		/   绝对路径，从根节点选取元素
+		//  相对路径，所有子节点中搜索对应元素
+		@   选取属性
+		.   当前节点
+		..  当前节点的父节点
+		注意:通过浏览器的F12的console进行调试$x
+		1>xpath支持id，class，name定位
+			通过id定位
+				$x("//*[@id='kw']")
+			通过name定位
+				$x("//*[@name='wd']")
+			通过class定位
+				$x("//input[@class='s_ipt']")
+			其他属性定位
+				$x("//*[@autocomplete='off']")
+		2>通过层级关系定位元素
+			通过绝对路径定位元素
+				$x("/html/body/div[1]/div[1]")
+			通过相对路径定位元素
+				$x("//a[@class='lb']")
+				$x("//a[@class='mnav c-font-normal c-color-t'][2]")
+		3>xpath的运算符
+			and   同时满足条件
+			or    满足一个条件即可
+			$x("//a[@class='mnav c-font-normal c-color-t' and @href='http://map.baidu.com']")
