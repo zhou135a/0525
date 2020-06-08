@@ -45,4 +45,59 @@
 		oracle    中大型
 		mongodb   大数据
 3.访问网站的过程
+	a.打开浏览器，输入www.sina.com.cn
+	b.系统到hosts文件中搜索是否有www.sina.com.cn对应的IP地址,如果有直接访问
+		192.168.4.101  www.baidu.com
+	c.如果没有，数据通过网络发送到DNS(域名解析服务器)对域名进行解析(IP)
+	d.数据通过网络发送到目标IP的web服务器中
+	e.web服务器解析数据的请求，发送请求给数据库
+	f.数据库返回所请求数据
+	g.web服务器整合资源后发回给浏览器
+4.URL(统一资源定位器)
+	http://login.taobao.com:80/member/login.jhtml?redirectURL
+	a.协议
+		一组规则规范
+		http协议(超文本传输协议)
+			超文本(富文本):有图有真相(声音、图像、视频)
+			普通文本
+			规定了数据传输中先传输什么后传输什么，怎样传输
+		http协议的请求
+			get    主要用于浏览，请求信息显示在URL上
+				https://s.taobao.com/search?q=zara
+				https://s.taobao.com/search?q=lv
+			post   主要用于提交，请求的数据显示在请求体中
+		http协议特点
+			无状态(彼此不记录过去的行为)
+		coockie&session
+			cookie  访问记录、验证信息
+			session 验证信息、30分钟超时
+		状态码
+			200     2开头请求成功
+			302     3开头移动或者缓存(重定向)
+			404     4开头客户端请求有问题
+			500     5开头服务器有问题
+	b.域名、IP
+		login.taobao.com
+		FQDN(完全合格域名)
+			www.taobao.com
+			heygor.zhenshuai.cn
+		DNS(域名解析服务器)
+			正向解析 域名--IP
+				1>win+r--cmd--ping www.baidu.com
+				2>win+r--cmd--nslookup www.baidu.com
+			反向解析 IP--域名	
+				1>win+r--cmd--nslookup 14.215.177.38
+	c.端口
+		80
+		区分应用层进程的标识
+		oracle            1521
+		mysql             3306
+		apache/nginx/iis  80
+		tomcat            8080
+		mongodb           27017
+		win下面查看端口的命令:
+			netstat -an
+	d.虚拟目录
+	e.访问文件
+	g.访问文件所使用的参数
 
