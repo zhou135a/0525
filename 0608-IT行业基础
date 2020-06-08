@@ -1,0 +1,48 @@
+1.IT行业基础+html
+2-4.html+css
+5-6.js基础
+=========================================
+1.常见的软件分类
+	QQ            c/s  
+	wechat        c/s  b/s
+	微博          c/s  b/s
+	贴吧          c/s  b/s
+	农药          c/s
+	高德          c/s  b/s
+	爱奇艺        c/s  b/s
+	真三国无双     c/s  单机
+	快播          c/s  b/s
+	a.单机软件
+		不需要网络就可以执行的应用程序
+	b.b/s架构软件
+		b:浏览器
+			IE         360  傲游  搜狗  猎豹  2345  世界之窗  QQ
+			firefox    测试 
+			chrome     开发
+			sarfari    
+		s:服务器
+			性能特别牛逼的电脑
+		注意:测试关注的是不同浏览器，不同版本的兼容性问题
+	c.c/s架构软件
+		c:客户端
+			移动端(手机、ipad、手持设备)
+			pc端
+		s:服务器
+			性能特别牛逼的电脑
+		注意:测试关注的是不同操作系统，不同位数的安装和反安装(软件捆绑)
+2.b/s架构的后端
+	a.操作系统
+		unix
+		linux
+		windows
+	b.web服务器
+		apache 不支持java
+		nginx  轻量级web服务器(负载均衡、反向代理)
+		iis    微软
+		tomcat java
+	c.数据库服务器
+		mysql     互联网
+		oracle    中大型
+		mongodb   大数据
+3.访问网站的过程
+
