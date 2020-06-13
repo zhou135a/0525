@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var commet="静夜思李白床前明月光,疑是地上霜,举头望明月,低头思故乡."
+		var partial=commet.substring(0,3);
+		// string.substring(start，stop)
+		// start必须要有，规定需要提取字符串的第一个字符在string中的位置
+		// stop 可选，比提取字符串最后一个字符多1，如果没有没有设置，默认显示到结尾
+		partial=partial.bold(); //标题加粗
+		document.write("<p align=\"center\">");
+		document.write(partial);
+		partial=commet.slice(3,5);
+		//slice用法 arrayobject.slice(start,stop)
+		//返回一个新的数组，包含start到stop不包含该元素的arrayobject的元素
+		document.write("<br>");
+		document.write(partial);
+		partial=commet.slice(5,17);
+		partial=partial.fontcolor("skyblue");
+		document.write("<br>");
+		document.write(partial);	
+		partial=commet.slice(17,29);
+		partial=partial.fontcolor("red");	
+		document.write("<br>");
+		document.write(partial);
+		document.write("</p>");
+	</script>
+</body>
+</html>
