@@ -154,4 +154,42 @@ http://down-ww3.7down.net/pcdown/soft/xiazai/vmware-pro15.zip
 		secure CRT
 		xterm
 		putty
+8.目录操作
+	a.创建目录
+		mkdir a
+			当前目录下创建空目录a
+		mkdir /opt/b c
+			/opt目录下创建b目录同时在当前目录下创建c目录
+		mkdir "d  e"
+			当前目录下创建空目录d  e(如果有特殊符号需要加引号或者转义符)
+		mkdir -p f/g/h
+			当前目录下创建级联目录f/g/h
+		tree
+			树状显示目录结构
+	b.删除目录
+		rmdir a
+			删除当前目录下的空目录a
+		rm -r b
+			删除当前目录下空目录b
+		rm -rf f
+			强制删除f目录(无提示)
+	c.复制目录(需要加-r参数)
+		cp -r f c
+			复制f目录到c目录中(c目录存在)
+		cp -r f g
+			复制当前目录下的f目录到当前目录下并且命名为g(g目录不存在)
+	d.剪切目录
+		mv f/* b
+			剪切当前目录下f目录下所有文件到b目录中(b目录存在)
+		mv b k
+			重命名当前目录下的b目录为k(k目录不存在)
+	/opt
+	+-----A
+	|     +--A1
+	|     +--A2
+	|
+	+-----B
+		  +--c
+		  +--d
+
 
