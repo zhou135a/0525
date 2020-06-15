@@ -1,0 +1,41 @@
+3-4 操作系统(linux)
+1-2 shell编程
+==================
+rhel 5.4
+http://rhel.ieesee.net/uingei/rhel-server-5.4-i386-dvd.iso
+vmware 15
+http://down-ww3.7down.net/pcdown/soft/xiazai/vmware-pro15.zip
+==================
+1.常见的操作系统平台
+	unix      mac  IOS  aix
+	linux   
+		redhat  centos
+		suse    opensuse
+		ubuntu  kali、backtrack
+		COS     红旗
+		麒麟    redstar
+		gentoo
+	windows
+		server
+			03 08 12 16 
+		desktop
+			win7  winxp  win10
+2.云、大数据、虚拟化、开源
+	a.开源
+		源代码开放,大部分免费
+		github.com
+		gitlab.com
+	b.大数据
+	c.云
+		云存储
+		云计算
+	d.虚拟化
+3.虚拟机软件
+	vmware  速度慢 稳定
+	vbox    速度快 不稳定
+	kvm     linux内核的虚拟机
+4.快速搜索文件
+	everything
+		rhel
+		vmware
+
