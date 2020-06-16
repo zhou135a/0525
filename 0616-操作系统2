@@ -301,6 +301,45 @@ vi
 		linux运行级别
 		vim /etc/inittab
 	ifconfig
+11.rhel下软件的安装
+	a.安装方式
+		手动安装(rpm安装)
+		yum自动安装
+		二进制文件安装
+		源码安装
+	b.软件安装基础
+		常用软件都在光盘的Server目录下
+		如果需要下载最新软件，建议到官网
+		type是iso9660的对应硬件就是光驱等
+		rhel的软件安装包都是以.rpm结尾
+	c.安装vsftpd服务
+		0>
+			安装操作系统
+			设置网络
+			设置主机名
+			绑定主机名
+			关闭selinux
+			关闭防火墙
+		1>加载光驱
+			右键虚拟机标签--设置--cd\dvd--[已连接、启动时链接]--使用iso映像文件--找到光盘--确定
+		2>输入mount命令查看type是iso9660的对应的目录(通过该目录进行光盘的访问)
+			mount |grep iso
+		3>进入到光盘的Server目录下
+			 cd /media/RHEL_5.4\ i386\ DVD/Server/
+		4>搜索vsftpd相关软件
+ 			ls |grep vsftpd
+		5>安装vsftpd软件
+			rpm -ivh vsftpd-2.0.5-16.el5.i386.rpm
+		6>启动vsftpd服务
+			service vsftpd start
+		7>测试
+			浏览器中输入ftp://linux的IP，如果出现pub目录说明安装完毕
+			如果需要共享其他文件，把文件复制到/var/ftp/
+		8>补充:win下映射网络磁盘
+
+
+
+
 
 
 
