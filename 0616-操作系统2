@@ -103,6 +103,65 @@ vi
 		vim /etc/sysconfig/network
 		HOSTNAME=heygor.com.cn
 	init 6重启系统
+4.主机名绑定
+	vim /etc/hosts
+	追加一行
+	192.168.7.213   heygor.com.cn
+5.selinux
+	a.查看selinux状态
+		getenforce
+	b.修改selinux配置文件
+		vim /etc/selinux/config
+			SELINUX=disabled
+	c.临时修改selinux关闭
+		setenfoce 0
+6.防火墙
+	service iptables status
+		查看防火墙的状态
+	service iptables stop
+		关闭防火墙
+	service iptables start
+		启动防火墙
+
+7.包、压缩文件、压缩包
+	a. 包（tar）
+		打包，创建的包文件通常以.tar结尾
+		tar -cvf test.tar Desktop install.log*
+			创建包文件test.tar，打包内容Desktop目录和install.log开头的文件
+		tar -tvf test.tar
+			查看包文件中文件属性信息
+		tar -xvf test.tar
+			解包包文件到当前目录下
+		tar -xvf test.tar -C /opt/
+			解包包文件到指定目录下(需要加-C)、
+	b.压缩文件（gzip）
+		du -sh install.log
+			查看install.log文件大小
+	  	gzip install.log
+	  		压缩文件install.log
+	  	gzip -l install.log.gz
+	  		查看压缩文件属性信息
+	  	gzip -d install.log.gz
+	  		解压压缩文件install.log.gz
+	c.压缩包
+		先打包，后压缩
+		tar -cvf test1.tar install.log*
+		gzip test1.tar
+		创建的压缩包文件以.tar.gz结尾或者以.tgz结尾
+		tar -czvf test1.tgz install.log*
+			创建压缩包test1.tgz，打包压缩内容为install.log开头的文件
+		tar -tzvf test1.tgz
+		 	查看压缩包中文件属性信息
+		tar -xzvf test1.tgz
+			解压压缩包文件test1.tgz
+
+
+
+
+
+
+
+
 
 
 
