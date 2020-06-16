@@ -154,6 +154,60 @@ vi
 		 	查看压缩包中文件属性信息
 		tar -xzvf test1.tgz
 			解压压缩包文件test1.tgz
+8.权限和用户
+	a.用户
+		/etc/passwd 
+			用户配置文件
+		/etc/shadow
+			用户密码配置文件
+		/etc/group
+			用户的组配置文件
+		创建用户
+			useradd simon
+				创建用户simon
+			passwd simon
+				给simon用户设置密码
+		修改用户
+			usermod -L simon
+				锁定simon用户
+			usermod -U simon
+				解锁simon用户
+		删除用户
+			userdel -r simon
+	b.权限
+		1>查看文件属性信息
+			ll install.log
+			-rw-r--r-- 1 root root 32156 06-16 09:28 install.log
+			1:文件类型   d:目录  -:普通文件
+			2-10:文件的权限
+			11:文件节点
+			12:文件拥有者
+			13:文件拥有组
+			14:文件大小
+			15:最后修改时间
+			16:文件名字
+		2>权限分类
+			r:读
+				目录(列表)
+				文件(查看文件内容)
+			w:写
+				目录(创建、重命名、删除文件)
+				文件(修改文件内容)
+			x:执行
+				目录(进入)
+				文件(可执行，通常是二进制文件或者脚本文件)
+		3.权限的分组
+			rw-        r--       r--
+			拥有者     拥有组     其他人
+		4.系统判断权限的过程
+			id heygor
+				查看heygor用户的组信息
+			a.判断heygor用户是否是文件的拥有者，如果是文件的拥有者，赋予相应权限
+			b.判断heygor用户是否是文件拥有组成员，如果是，赋予相应权限
+			c.如果两个都不是，赋予其他人权限
+
+
+
 
 
 
