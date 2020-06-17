@@ -129,7 +129,7 @@
 				conf    tomcat的配置文件所在位置
 				lib     tomcat的库文件所在位置
 				logs    tomcat的日志存放的位置
-				webapp  tomcat项目源码部署位置
+				webapps  tomcat项目源码部署位置
 				temp    tomcat存放临时文件的位置
 			25>启动tomcat
 				进入到tomcat的bin目录
@@ -140,6 +140,64 @@
 				ps -ef |grep tomcat
 				netstata -an |grep 8080
 				浏览器中输入linux的ip:8080
+		3>tenorder项目的部署
+			------------------------
+			开发语言:java
+			web服务器:tomcat
+			数据库服务器:mysql
+			------------------------
+			31>安装配置好jdk
+			32>安装配置好tomcat
+			33>安装配置好mysql
+			34>下载并且解压tenorder项目
+			35>删除tomcat中webspps中所有文件
+				rm -rf /root/apache-tomcat-7.0.96/webapps/*
+			36>把解压后的tenorder文件夹传入tomcat的webapps中
+			37>导入数据文件
+				@0.目录切换到tenorder.sql所在目录
+					 cd /root/apache-tomcat-7.0.96/webapps/tenorder/
+				@1.设置mysql的管理员root的密码
+					mysqladmin -u root password 'test'
+					设置mysql中root用户的登录密码为test
+				@2.登录mysql
+					mysql -u root -p
+				@3.创建数据库
+					create database ten;
+					创建数据库，名字为ten
+				@4.切换数据库
+					use ten;
+					当前数据库切换为ten
+				@5.导入tenorder.sql文件
+					source tenorder.sql;
+				@6.退出mysql
+					exit
+			38>修改数据库的信息
+				根据安装文档提示进行操作
+				vim /root/apache-tomcat-7.0.96/webapps/tenorder/WEB-INF/classes/database.properties
+				@1.修改数据库用户名
+				@2.修改用户登录密码
+				@3.修改数据库IP
+				@4.修改数据库名字
+			39>重启tomcat
+				@1.进入到tomcat的bin目录
+					cd /root/apache-tomcat-7.0.96/bin/
+				@2.执行shutdown.sh
+					./shutdown.sh
+				@3.执行startup.sh
+					./startup.sh
+			40>访问
+				浏览器中输入前台地址:
+				linux的IP:8080/tenorder
+				浏览器中输入后台地址:
+				linux的IP:8080/tenorder/admin
+					admin
+					admin
+
+
+
+
+
+
 
 
 
