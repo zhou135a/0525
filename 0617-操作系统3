@@ -67,7 +67,6 @@
 			密码      :    空的
 			数据库名  ：    test
 
-
 2.二进制文件的安装和部署
 	a.mongodb的下载和安装
 		1>下载mongodb软件
@@ -81,7 +80,7 @@
 		4>设置环境变量(让系统能找到mongodb的命令)
 			常用配置文件
 				/etc/profile 	全局配置
-				~/.bash_profile 用户配置
+				~/.bash_profile 用户配置(推荐)
 			在PATH后面增加mongodb的bin目录的路径
 				:/root/mongodb/bin
 		5>使环境变量生效
@@ -96,6 +95,53 @@
 		7>测试mongodb
 			ps -ef |grep mongod
 			netstat -an |grep 27017
+	b.tenroder项目的部署
+		1>安装配置jdk
+			jdk java的开发环境
+			jre java的运行环境
+			11>jdk下载(建议oracle)
+				操作系统类型
+				操作系统位数
+			12>把jdk压缩包传入linux中
+			13>查看linux中jdk的版本
+				java -version
+			14>解压jdk压缩包
+				tar -xzvf jdk-7u7-linux-i586.tar.gz
+			15>设置环境变量
+				vim ~/.bash_profile
+				新增
+				JAVA_HOME=/root/jdk   #jdk解压的位置
+				在PATH中最前面增加jdk和jre的bin路径
+				JAVA_HOME=/root/jdk1.7
+				PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH:$HOME/bin:/root/mongodb/bin
+			16>让环境变量生效
+				source .bash_profile
+			17>查看linux中jdk的版本
+				java -version
+		2>tomcat的安装和配置
+			21>下载tomcat压缩包
+				https://tomcat.apache.org/download-70.cgi
+			22>把tomcat传入linux中
+			23>解压tomcat压缩包
+				tar -xzvf apache-tomcat-7.0.96.tar.gz
+			24>tomcat目录简介
+				bin 	tomcat的命令所在位置
+				conf    tomcat的配置文件所在位置
+				lib     tomcat的库文件所在位置
+				logs    tomcat的日志存放的位置
+				webapp  tomcat项目源码部署位置
+				temp    tomcat存放临时文件的位置
+			25>启动tomcat
+				进入到tomcat的bin目录
+				 cd /root/apache-tomcat-7.0.96/bin/
+				执行startup.sh
+				 ./startup.sh
+			26>测试
+				ps -ef |grep tomcat
+				netstata -an |grep 8080
+				浏览器中输入linux的ip:8080
+
+
 
 
 
