@@ -68,8 +68,34 @@
 			数据库名  ：    test
 
 
-
-
+2.二进制文件的安装和部署
+	a.mongodb的下载和安装
+		1>下载mongodb软件
+			操作系统类型
+			操作系统位数
+				i386 i686 	32位操作系统
+				x86_64 x64  64位操作系统
+		2>把下载好的压缩包传入linux中
+		3>解压压缩包
+			tar -xzvf mongodb-linux-i686-2.4.9.tgz
+		4>设置环境变量(让系统能找到mongodb的命令)
+			常用配置文件
+				/etc/profile 	全局配置
+				~/.bash_profile 用户配置
+			在PATH后面增加mongodb的bin目录的路径
+				:/root/mongodb/bin
+		5>使环境变量生效
+			source ~/.bash_profile 
+		6>启动mongodb服务
+			mkdir /opt/data  创建一个目录用于存储mongodb数据
+			mongod --dbpath /opt/data --logpath /opt/data/mongo.log --fork
+			mongod mongodb的主服务
+			--dbpath  mongodb的存放数据的路径
+			--logpath mongodb的日志文件存放位置
+			--fork    后台运行
+		7>测试mongodb
+			ps -ef |grep mongod
+			netstat -an |grep 27017
 
 
 
