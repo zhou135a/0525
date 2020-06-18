@@ -141,6 +141,83 @@
 		逻辑判断   -a(与，and) -o(或，or)
 			[ 条件1 -a 条件2 ] 只有两个条件都成立，整个大条件才成立
 			[ 条件1 -o 条件2 ] 只需要一个条件成立，整个大条件就成立
-			
+13.循环
+	ping 服务器群
+	批量创建用户 user1-user100
+	计算0-100的和，0-101偶数的和
+	for循环
+		例子1:
+		for num in 1 2 3 4 5
+		do
+		        echo "no.$num"
+		done
+		例子2
+		for i in `seq 10`
+		do
+		        useradd user$i
+		done
+		例子3
+		for i in `seq 100`
+		do
+		        let total+=$i
+		done
+		echo "total=$total"
+		例子4
+		total=0
+		for i in `seq 100`
+		do
+		        if [ $(( i%2 )) -eq 0 ];then
+		                let total+=$i
+		        fi
+		done
+		echo "total =$total"
+		例子5
+		for (( i=0;i<10;i++ ))
+		do
+		        echo $i
+		done
+
+		for (( i=0;i<10;i+=2 ))
+		do
+		        echo $i
+		done
+	while循环
+		实现如果不确定循环次数可以使用while
+		while [ 条件 ] #只要条件成立，就继续循环
+		do
+			命令
+		done
+		例子：
+		i=1
+		while [ $i -le 10 ]
+		do
+		        echo "$i"
+		        let i++
+		done
+
+		while true
+		do
+		        echo "in the loop"
+		        sleep 2
+		done
+	跳出循环
+		continue   结束本次循环
+		break      结束整个循环
+		i=10
+		while [ $i -gt 0 ]
+		do
+		        let i--
+		        if [ $i -eq 5 ];then
+		                continue
+		        elif [ $i -eq 2 ];then
+		                break
+		        fi
+		        echo $i
+		done
+
+
+
+
+
 
 
