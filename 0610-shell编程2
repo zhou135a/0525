@@ -1,0 +1,66 @@
+1.线性的文本处理工具
+	可以在文本数据进行字段分割和重组
+	默认是以空格或者连续空格作为分割符号
+	a.获取本机的IP地址
+		ifconfig eth0 |grep Bcast | awk -F " " '{ print $2}' |awk -F ":" '{ print $2}'
+	b.打印所有行
+		awk '{ print }' /etc/passwd
+	c.打印第一列
+		查看系统中有哪些用户
+		awk -F ":" '{ print $1 }' /etc/passwd
+	d.打印多列
+		awk -F ":" '{ print $1,$3 }' /etc/passwd
+		awk -F ":" '{ print $1":"$3 }' /etc/passwd
+	e.把所有通过ssh登录失败的IP打印出来
+		lastb -ai | grep ssh |awk  '{print $10}' |uniq -c
+		lastb -i   登录失败信息
+		uniq -c    去重计算数量
+	f.打印每行的最后一列
+		$NF   最后一列
+		awk -F ":" '{ print $NF }' /etc/passwd
+		/bin/bash               用户可以登录系统进行操作
+		/sbin/nologin           用户可以在系统中运行程序，但是不能登录系统
+	g.打印每行的字段数(每行多少个列)
+		NF    列的数量
+		 awk -F ":" '{ print NF }' passwd
+	h.运算操作符号
+		+
+		-
+		*
+		/
+		%
+		^
+		++
+		--
+		echo  |awk '{ print 2^3}'
+	i.awk的关系操作符
+		==
+		!=
+		>=
+		<=
+		>
+		<
+	j.逻辑操作符
+		&&   逻辑与
+		||   逻辑或
+		！   逻辑非
+	k.打印行号
+		awk -F ":" '{ print NR,$1}' /etc/passwd
+		awk -F ":" 'NR==8{print}' passwd
+		简单的条件判断
+		NR代表行号
+		虽然打印的是第八行，但是前7行，awk一样读取，只是没有打印
+	l.打印字段数量大于3的行
+		必须要加分割符号，列数才有意义
+		awk -F ":" 'NF>3{print}' passwd
+	m.打印uid在10和20之间的用户名
+		awk -F ":" '$3>=10&&$3<=20{print}' passwd
+	n.隔行删除(隔行打印)
+		awk 'NR%2==0{print }' passwd
+
+
+
+
+
+
+
