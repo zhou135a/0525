@@ -165,6 +165,15 @@
 			sed -e '/^daemon/,/shutdown$/d' passwd
 	2.直接保存结果到源文件中
 		sed -i '/^root/d' passwd
+		在第1行前插入asdasdasdada  i
+		sed -i '1i\asdasdasdada' passwd
+		在第一行后插入asdasdasdada a
+		sed -i '1a\asdasdasdada' passwd
+		在第一行后插入多行 每一行末尾（除最后一行）添加\
+		sed -i '1a\
+		asdasdasdada\
+		this is\
+		qq' passwd
 	3.打印（p）
 		打印所有行  			sed -n -e 'p' passwd
 		打印第一行和第三行    sed -n -e '1p;3p' passwd
