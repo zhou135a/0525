@@ -1,0 +1,110 @@
+ctl+shift+t   新开一个终端 
+ctl+shift++   窗口放大
+ctl+-         窗口缩小
+
+ubuntu中管理员一般是不允许登录的，允许su(切换用户)
+大部分命令需要加sudo来执行
+
+安装软件
+1>安装openssh-server(远程链接服务)
+	sudo apt-get install openssh-server
+	sudo apt-get install vim
+2>远程登录命令
+	ssh 192.168.7.247
+	ssh simon@192.168.7.247
+3>监控命令
+	watch who   监控who命令的执行结果
+4>远程拷贝
+	scp  目标  本地
+		sudo scp heygor@172.168.7.247:/etc/passwd .
+	scp  本地  目标
+		sudo scp passwd heygor@192.168.7.247:/home/heygor
+5>ubuntu下的网络设置
+	a.搜索一个IP用于ubuntu的网络设置
+	b.修改ubuntu网卡设置
+		sudo vim /etc/network/interfaces
+		如果自己设置静态IP地址，在该文件中增加内容
+		auto ens33                 #自动配置ens33网卡
+		iface ens33 inet static    #获取IP地址的方式(static 静态设置)
+		address 192.168.7.198      #IP地址
+		netmask 255.255.254.0      #子网掩码
+		gateway 192.168.6.1        #网关
+		注意:修改配置后必须要重启网络服务
+		sudo /etc/init.d/networking restart
+		注意:如果重启之后不生效，重启系统
+	c.设置主机名
+		 sudo vim /etc/hostname
+		 主机名写入该文件中
+		 heygor-s
+	d.绑定主机名
+		sudo vim /etc/hosts
+		192.168.7.247  heygor-s
+		注意:安装系统后要设置IP、主机名、主机名绑定
+	e.dns配置
+		sudo vim /etc/resolv.conf 
+		nameserver 202.96.134.133
+6>nfs服务搭建
+	nfs：网络文件系统，可以在*ninx系统中进行文件共享，也是nas(网络附加存储)
+	nfs架构：c/s架构(c:客户端  s:服务器)
+	a.软件包的安装
+		sudo apt-get install nfs-kernel-server nfs-common	
+		nfs-kernel-server   nfs的主服务
+		nfs-common          nfs的客户端服务
+	b.nfs的服务端配置
+		sudo vim /etc/exports
+		/home/heygor *(rw)
+		共享的目录      /home/heygor
+		可以操作的用户  *所有用户
+		对目录的权限    rw读写权限
+		重启nfs服务生效  sudo apt-get install nfs-kernel-server nfs-common
+	c.nfs的客户端服务
+		查看nfs服务器的共享目录
+		showmount -e nfs服务器的IP
+		挂在nfs服务到本地
+		sudo mount 192.168.7.247:/home/heygor /mnt
+	d.补充
+		取消挂载
+			umount /mnt
+		客户端          -------------网络--------------    服务端
+		192.168.7.240                                      192.168.7.247
+		nfs-common                                         nfs-kernel-server
+								   /etc/exports
+		sudo mount 192.168.7.247:/home/heygor /mnt
+		通过/mnt目录来访问网络磁盘192.168.7.247:/home/heygor中的内容
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
