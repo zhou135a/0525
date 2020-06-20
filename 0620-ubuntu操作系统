@@ -1,0 +1,60 @@
+ctl+shift+t   新开一个终端 
+ctl+shift++   窗口放大
+ctl+-         窗口缩小
+
+ubuntu中管理员一般是不允许登录的，允许su(切换用户)
+大部分命令需要加sudo来执行
+
+安装软件
+1>安装openssh-server(远程链接服务)
+	sudo apt-get install openssh-server
+	sudo apt-get install vim
+2>远程登录命令
+	ssh 192.168.7.247
+	ssh simon@192.168.7.247
+3>监控命令
+	watch who   监控who命令的执行结果
+4>远程拷贝
+	scp  目标  本地
+		sudo scp heygor@172.168.7.247:/etc/passwd .
+	scp  本地  目标
+		sudo scp passwd heygor@192.168.7.247:/home/heygor
+5>ubuntu下的网络设置
+	a.搜索一个IP用于ubuntu的网络设置
+	b.修改ubuntu网卡设置
+		sudo vim /etc/network/interfaces
+		如果自己设置静态IP地址，在该文件中增加内容
+		auto ens33                 #自动配置ens33网卡
+		iface ens33 inet static    #获取IP地址的方式(static 静态设置)
+		address 192.168.7.198      #IP地址
+		netmask 255.255.254.0      #子网掩码
+		gateway 192.168.6.1        #网关
+		注意:修改配置后必须要重启网络服务
+		sudo /etc/init.d/networking restart
+		注意:如果重启之后不生效，重启系统
+	c.设置主机名
+		 sudo vim /etc/hostname
+		 主机名写入该文件中
+		 heygor-s
+	d.绑定主机名
+		sudo vim /etc/hosts
+		192.168.7.247  heygor-s
+		注意:安装系统后要设置IP、主机名、主机名绑定
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
