@@ -40,6 +40,56 @@ ubuntu中管理员一般是不允许登录的，允许su(切换用户)
 		sudo vim /etc/hosts
 		192.168.7.247  heygor-s
 		注意:安装系统后要设置IP、主机名、主机名绑定
+	e.dns配置
+		sudo vim /etc/resolv.conf 
+		nameserver 202.96.134.133
+6>nfs服务搭建
+	nfs：网络文件系统，可以在*ninx系统中进行文件共享，也是nas(网络附加存储)
+	nfs架构：c/s架构(c:客户端  s:服务器)
+	a.软件包的安装
+		sudo apt-get install nfs-kernel-server nfs-common	
+		nfs-kernel-server   nfs的主服务
+		nfs-common          nfs的客户端服务
+	b.nfs的服务端配置
+		sudo vim /etc/exports
+		/home/heygor *(rw)
+		共享的目录      /home/heygor
+		可以操作的用户  *所有用户
+		对目录的权限    rw读写权限
+		重启nfs服务生效  sudo apt-get install nfs-kernel-server nfs-common
+	c.nfs的客户端服务
+		查看nfs服务器的共享目录
+		showmount -e nfs服务器的IP
+		挂在nfs服务到本地
+		sudo mount 192.168.7.247:/home/heygor /mnt
+	d.补充
+		取消挂载
+			umount /mnt
+		客户端          -------------网络--------------    服务端
+		192.168.7.240                                      192.168.7.247
+		nfs-common                                         nfs-kernel-server
+								   /etc/exports
+		sudo mount 192.168.7.247:/home/heygor /mnt
+		通过/mnt目录来访问网络磁盘192.168.7.247:/home/heygor中的内容
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
